@@ -7,7 +7,9 @@ pipeline {
     }
     stages {
 		stage('Notify slack') {
-            echo '#### Notify slack ####'
+			steps {
+				echo 'Hello'
+			}
         }
 		
         stage('Build') {
@@ -17,7 +19,9 @@ pipeline {
         }
  
 		stage('Deliver') {
-            echo 'Deliver'
+			steps {
+				echo 'Deliver'
+			}
         }
     }
 }
