@@ -20,6 +20,7 @@ pipeline {
 		
 		stage('Test') {
             steps {
+				echo "#### Test step ####"
                 sh 'mvn test'
             }
             post {
@@ -30,9 +31,10 @@ pipeline {
         }
  
 		stage('Deliver') {
-			steps {
-				echo 'Deliver'
-			}
+            steps {
+				echo "#### Deliver step ####"
+                sh './jenkins/scripts/deliver.sh'
+            }
         }
     }
 }
