@@ -8,13 +8,24 @@ pipeline {
     stages {
 		stage('Notify slack') {
 			steps {
-				echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+				echo "###### Running ${env.BUILD_ID} on ${env.JENKINS_URL} #####"
 			}
         }
 		
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
+            }
+        }
+		
+		stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                  junit 'target/surefire-reports/*.xml'
+                }
             }
         }
  
