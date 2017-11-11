@@ -8,7 +8,7 @@ pipeline {
     stages {
 		stage('Notify slack') {
 			steps {
-				echo 'Hello'
+				echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
 			}
         }
 		
